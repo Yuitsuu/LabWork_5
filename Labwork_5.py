@@ -35,4 +35,35 @@
 
 #         5
 
-#gAGSFjgasfgajfasjffgjafg
+import random
+
+A=int(input())
+B=int(input())
+s=random.randint(A,B)
+
+while True:
+    n=int(input())
+    if n>s:
+        print("Перелёт")
+    elif n<s:
+        print("Недолёт")
+    else:
+        print("Число угадано")
+        break
+
+#         6
+
+N=int(input())
+
+temperat=100
+c=0
+
+for i in range(N):
+    t=int(input())
+    if t<temperat:
+        temperat=t
+        c=1
+    elif t==temperat:
+        c+=1
+
+print(c)
