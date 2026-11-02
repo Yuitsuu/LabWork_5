@@ -1,121 +1,165 @@
 #        1
 
-#N=int(input())
-#for i in range(1,11):
-#    print(i, "x", N,"=", i*N)
+def table():
+    N = int(input())
+    for i in range(1, 11):
+        print(i, "x", N, "=", i * N)
+table()
 
 #         2
 
-#x=0
-#while x <=10:
-#    if x !=5:
-#        print(x,":", (x-3)/(x-5))
-#    x +=0.5
+def table():
+    x=0
+    while x <= 10:
+        if x != 5:
+            y = (x-3)/(x-5)
+            print(x,"|", y)
+        x=x+0.5
+table()
 
 #         3
 
-#Z = int(input())
-#s=0
-#for i in range(Z-1):
-#    s+= int(input())
-#print(Z*(Z+1)//2-s)
+def f():
+    Z=int(input())
+    s=0
+    for i in range(Z-1):
+        s=s+int(input())
+    print(Z*(Z+1)//2-s)
+f()
 
 #         4
 
-#print('Введите диапазон A и B:')
-#A=int(input())
-#B=int(input())
-
-#while True:
-#    print('Введите число')
-#    C= int(input())
-#    if A<=C<=B:
-#        print('Число корректное')
-#        break
+def f():
+    A=int(input())
+    B=int(input())
+    if A>B:
+        A,B=B,A
+    while True:
+        print('Введите число')
+        n=int(input())
+        if A<=n<=B:
+            print('Число коректно')
+            break
+f()
 
 #         5
 
-#import random
-
-#A=int(input())
-#B=int(input())
-#s=random.randint(A,B)
-
-#while True:
-#    n=int(input())
-#    if n>s:
-#        print("Перелёт")
-#    elif n<s:
-#        print("Недолёт")
-#    else:
-#        print("Число угадано")
-#        break
+import random
+def f():
+    A = int(input())
+    B = int(input())
+    s = random.randint(A, B)
+    n = 0
+    while n != s:
+        n = int(input())
+        if n > s:
+            print("Перелёт")
+        elif n < s:
+            print("Недолёт")
+    print("Число угадано")
+f()
 
 #         6
 
-#N=int(input())
-#temperat=100
-#c=0
-
-#for i in range(N):
-#    t=int(input())
-#    if t<temperat:
-#        temperat=t
-#        c=1
-#    elif t==temperat:
-#        c+=1
-#print(c)
+def f():
+    D = int(input())
+    min_temp = 100
+    c = 0
+    for i in range(D):
+        t = int(input())
+        if t < min_temp:
+            min_temp = t
+            c = 1
+        elif t == min_temp:
+            c+= 1
+    print(c)
+f()
 
 #         7
 
-#A = int(input())
-#B = int(input())
+def C(A, B):
+    while A!=B:
+        if A>B:
+            A=A-B
+        else:
+            B=B-A
+    return A
 
-#while A != B:
-#    if A > B:
-#        A = A - B
-#    else:
-#        B = B - A
-#print(A)
+def R(A, B):
+    if A == B:
+        return A
+    if A>B:
+        return R(A - B, B)
+    return R(A, B - A)
+
+def f():
+    A = int(input())
+    B = int(input())
+    print("Цикл:", C(A, B))
+    print("Рекурсия:", R(A, B))
+f()
 
 #         8
 
-#N = int(input())
+def fac_F(n):
+    c = 1
+    for i in range(1, n + 1):
+        c =c* i
+    return c
 
-#f = 1
-#for i in range(1, N + 1):
-#    f = f * i
-#print(f)
-#f = 1
-#i = 1
-#while i <= N:
-#    f = f * i
-#    i = i + 1
-#print(f)
-#def fact(n):
-#    if n <= 1:
-#        return 1
-#    return n * fact(n - 1)
-#print(fact(N))
+def fac_W(n):
+    c = 1
+    i = 1
+    while i <= n:
+        c=c* i
+        i =i+1
+    return c
+
+def fac_R(n):
+    if n <= 1:
+        return 1
+    return n * fac_R(n - 1)
+
+def fac():
+    N = int(input())
+    print(fac_F(N))
+    print(fac_W(N))
+    print(fac_R(N))
+
+fac()
 
 #         9
 
-#x = float(input())
-#eps = float(input())
+def C(x, eps):
+    y1 = 1
+    while True:
+        y = 0.5 * (y1 + x / y1)
+        if abs(y - y1) < eps:
+            return y
+        y1 = y
 
-#y = 1
-#while True:
-#    y2 = 0.5 * (y + x / y)
-#    if abs(y2 - y) < eps:
-#        break
-#    y = y2
-#print(y2)
+def R(x, eps, y1=1):
+    y = 0.5 * (y1 + x / y1)
+    if abs(y - y1) < eps:
+        return y
+    return R(x, eps, y)
+
+def f():
+    x = float(input())
+    eps = float(input())
+    print("Цикл:", C(x, eps))
+    print("Рекурсия:", R(x, eps))
+f()
 
 #         10
 
-N = int(input())
-
-for i in [64, 32, 16, 8, 4, 2, 1]:
-    if N >= i:
-        print(i, "—", N // i)
-        N = N % i
+def f():
+    N = int(input())
+    c = 64
+    while c >= 1:
+        if N >= c:
+            count = N //c
+            print(f"{c} — {count}")
+            N = N % c
+        c = c // 2
+f()
